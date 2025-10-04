@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<!-- Name: Osama Ismail Kamal - ID: 2138145 - Section: CS1 - Date: 2025/10/06 -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>World Protein</title>
+  <link rel="stylesheet" href="../CSS/styles.css">
+  <link rel="stylesheet" href="../CSS/cart_styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div>
+      <h1 class="PageName">Cart Page</h1>
+      <nav>
+        <ul>
+          <li><a href="Main_Page.html">Home</a></li>
+          <li><a href="Proteins.html">Proteins</a></li>
+          <li><a href="BMI.html">BMI Calculator</a></li>
+          <li><a href="Cart.html"><u>Cart</u></a></li>
+          <li><a href="Services.html">Services</a></li>
+          <li><a href="Contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Cart Section -->
+  <main>
+    <h2>Your Cart</h2>
+    <!-- Cart Table -->
+    <table class="cart-table">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Price ($)</th>
+          <th>Qty</th>
+          <th>Subtotal ($)</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3"><strong>Total</strong></td>
+          <td id="total">0</td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <!-- Action Buttons -->
+    <button id="clear-cart">Remove All Items</button>
+    <button id="checkout-cart">Checkout</button>
+  </main>
+
+  <!-- JavaScript Section -->
+  <script>
+    // Function to load items from localStorage into the table
+    function loadCart() {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];  // get cart from storage
+      let tbody = document.querySelector(".cart-table tbody");
+      let total = 0;
+      tbody.innerHTML = "";  // clear table body
+
+      // Loop through cart items and display them
+      cart.forEach(item => {
+        let subtotal = item.price * item.qty;
+        total += subtotal;
+        tbody.innerHTML += `
+          <tr>
+            <td>${item.name}</td>
+            <td>${item.price.toFixed(2)}</td>
+            <td>${item.qty}</td>
+            <td>${subtotal.toFixed(2)}</td>
+          </tr>
+        `;
+      });
+
+      // Show total at the bottom
+      document.getElementById("total").textContent = total.toFixed(2);
+    }
+
+    // Event: Clear all items from cart
+    document.getElementById("clear-cart").addEventListener("click", function() {
+      localStorage.removeItem("cart");  // delete cart from storage
+      loadCart();                       // reload empty table
+      alert("All items removed from cart!");
+    });
+
+    // Event: Checkout (clear cart after confirmation)
+    document.getElementById("checkout-cart").addEventListener("click", function() {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      if (!cart.length) return alert("Cart is empty.");  // stop if empty
+      localStorage.removeItem("cart");                  // clear cart
+      loadCart();                                       // refresh table
+      alert("Checkout!");
+    });
+
+    // Load cart on page load
+    loadCart();
+  </script>
+</body>
+</html>

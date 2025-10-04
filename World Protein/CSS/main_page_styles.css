@@ -1,0 +1,20 @@
+/* Advertisements Figure CSS */
+.Advertisements figure {
+    display: inline-block;       
+    margin: 10px;   
+    text-align: center;  
+    vertical-align: top; 
+}
+
+.Advertisements img {
+    max-width: 100%;       /* responsive scaling */
+    border-radius: 350px;  /* rounded corners */
+}
+
+.intro p{
+  margin: 1rem auto;       
+  max-width: 800px;        
+  font-size: 1rem;         
+  line-height: 1.5;        /* space between lines */
+  text-align: center;      
+}
