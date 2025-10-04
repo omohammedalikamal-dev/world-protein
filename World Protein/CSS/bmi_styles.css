@@ -1,0 +1,30 @@
+main {
+  max-width: 400px;
+  margin: 1rem auto;
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin-top: .5rem;
+}
+
+input {
+  padding: .3rem;
+  margin-top: .2rem;
+}
+
+button {
+  margin-top: .8rem;
+  padding: .4rem .8rem;
+  background: #3a6ea5;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+#out {
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
