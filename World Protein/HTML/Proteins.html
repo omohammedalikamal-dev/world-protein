@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!-- Name: Osama Ismail Kamal - ID: 2138145 - Section: CS1 - Date: 2025/10/06 -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>World Protein</title>
+  <link rel="stylesheet" href="../CSS/styles.css">
+  <link rel="stylesheet" href="../CSS/protein_styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div>
+    <h1 class="PageName">Proteins Page</h1>
+    <nav>
+      <ul>
+        <li><a href="Main_Page.html">Home</a></li>
+        <li><a href="Proteins.html"><u>Proteins</u></a></li>
+        <li><a href="BMI.html">BMI Calculator</a></li>
+        <li><a href="Cart.html">Cart</a></li>
+        <li><a href="Services.html">Services</a></li>
+        <li><a href="Contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+  </header>
+
+  <!-- Main -->
+  <main>
+    <!-- Shop -->
+    <div class="Shop">
+    <figure>
+    <img src="../images/4.avif" alt="Protein Shake">
+    <figcaption>
+        Impact Whey Isolate Price: 15$<br>&copy; MyProtein<br>
+        <button onclick="addToCart('Impact Whey Isolate', 15)">Add to Cart</button>
+    </figcaption>
+    </figure>
+
+    <figure>
+    <img src="../images/5.avif" alt="Protein Shake">
+    <figcaption>
+        Impact Whey Gainer Price: 25$<br>&copy; MyProtein<br>
+        <button onclick="addToCart('Impact Whey Gainer', 25)">Add to Cart</button>
+    </figcaption>
+    </figure>
+
+    <figure>
+    <img src="../images/6.avif" alt="Protein Shake">
+    <figcaption>
+        Clear Protein (Lemon &amp; Lime) Price: 20$<br>&copy; MyProtein<br>
+        <button onclick="addToCart('Clear Protein (Lemon & Lime)', 20)">Add to Cart</button>
+    </figcaption>
+    </figure>
+
+    </div>
+  </main>
+    <script>
+    // Function to add items to cart saved in local storage
+    function addToCart(product, price) {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        
+        // Check if already in cart
+        let item = cart.find(p => p.name === product);
+        if (item) {
+            item.qty += 1; // increment quantity
+        } else {
+            cart.push({ name: product, price: price, qty: 1 });
+        }
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+        alert(product + " added to cart!");
+    }
+    </script>
+
+</body>
+</html>
+
+
